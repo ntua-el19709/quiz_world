@@ -34,7 +34,7 @@ class _NavButtonState extends State<NavButton> {
     //correct = widget.correct;
     //widget.btext;
     return Container(
-        height: 10,
+        height: 50,
         width: 500,
         child: TextButton(
           //autofocus: false,
