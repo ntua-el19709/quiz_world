@@ -63,12 +63,17 @@ class _QuestionState extends State<Question> {
     return Container(
         width: 600,
         height: 280,
-        color: Color.fromARGB(210, 255, 255, 255),
         child: TextButton(
             style: TextButton.styleFrom(
+                primary: Color.fromARGB(210, 255, 255, 255),
+                //onPrimary: Colors.white,
+                //onSurface: Colors.purple,
                 padding: EdgeInsets.symmetric(horizontal: 16.0),
+                shape: const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                ),
                 side: BorderSide(width: 5, color: Colors.black)),
-            onPressed: null,
+            onPressed: () {},
             child: Column(//backgroundColor: Color.fromARGB(210, 255, 255, 255)
                 children: <Widget>[
               Container(height: 10),
