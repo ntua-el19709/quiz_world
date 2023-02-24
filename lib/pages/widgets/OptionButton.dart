@@ -46,16 +46,17 @@ class _OptionButtonState extends State<OptionButton> {
           //autofocus: false,
           //clipBehavior: Clip.none,
           style: ElevatedButton.styleFrom(
-            primary: _getColor(),
-            onPrimary: Colors.white,
-            onSurface: Colors.purple,
-            padding: EdgeInsets.symmetric(horizontal: 16.0),
-            shape: const RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(Radius.circular(20.0)),
-            ),
-          ),
+              //backgroundColor: Colors.black,
+              primary: _getColor(),
+              onPrimary: Colors.white,
+              //onSurface: Colors.purple,
+              padding: EdgeInsets.symmetric(horizontal: 16.0),
+              shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(20.0)),
+              ),
+              side: BorderSide(width: 3, color: Colors.black)),
           onPressed: _onPressed,
-          child: Text(widget.opttext + '$_pressed'),
+          child: Text(widget.opttext),
         ));
   }
 }
