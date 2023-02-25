@@ -162,8 +162,8 @@ class _QuizoftheDayState extends State<QuizoftheDay> {
               ),
               Container(
                   height: 50,
-                  child:
-                      NavButton(btext: 'Take Quiz of the Day', next: 'djcsx')),
+                  child: NavButton(
+                      btext: 'Take Quiz of the Day', next: 'QuizPage')),
               Container(
                 height: 20,
               ),

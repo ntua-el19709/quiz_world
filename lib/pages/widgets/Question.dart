@@ -64,7 +64,7 @@ class _QuestionState extends State<Question> {
         width: 600,
         height: 280,
         child: TextButton(
-            style: TextButton.styleFrom(
+            style: ElevatedButton.styleFrom(
                 primary: Color.fromARGB(210, 255, 255, 255),
                 //onPrimary: Colors.white,
                 //onSurface: Colors.purple,

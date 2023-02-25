@@ -80,7 +80,7 @@ class _CategoriesState extends State<Categories> {
   List<Widget> getCats() {
     List<Widget> CategoriesNames = [];
     for (int i = 0; i < 8; i++) {
-      CategoriesNames.add(NavButton(btext: names[i], next: names[i]));
+      CategoriesNames.add(NavButton(btext: names[i], next: 'Category'));
       CategoriesNames.add(Container(height: 10));
     }
     return CategoriesNames;

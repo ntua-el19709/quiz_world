@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const QuizCompleted(
+      home: const ChallengeCompleted(
         title: 'Flutter Demo Home Page',
         score: 95,
       ),
@@ -37,8 +37,9 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class QuizCompleted extends StatefulWidget {
-  const QuizCompleted({super.key, required this.title, required this.score});
+class ChallengeCompleted extends StatefulWidget {
+  const ChallengeCompleted(
+      {super.key, required this.title, required this.score});
 
   // This widget is the home page of your application. It is stateful, meaning
   // that it has a State object (defined below) that contains fields that affect
@@ -51,10 +52,10 @@ class QuizCompleted extends StatefulWidget {
   final String title;
   final int score;
   @override
-  State<QuizCompleted> createState() => _QuizCompletedState();
+  State<ChallengeCompleted> createState() => _ChallengeCompletedState();
 }
 
-class _QuizCompletedState extends State<QuizCompleted> {
+class _ChallengeCompletedState extends State<ChallengeCompleted> {
   List<String> quizes = [
     'WW1',
     'WW2',
@@ -80,12 +81,12 @@ class _QuizCompletedState extends State<QuizCompleted> {
   }
 
   List<Widget> getQuizes() {
-    List<Widget> QuizCompletedNames = [];
+    List<Widget> ChallengeCompletedNames = [];
     for (int i = 0; i < 8; i++) {
-      QuizCompletedNames.add(NavButton(btext: quizes[i], next: quizes[i]));
-      QuizCompletedNames.add(Container(height: 10));
+      ChallengeCompletedNames.add(NavButton(btext: quizes[i], next: quizes[i]));
+      ChallengeCompletedNames.add(Container(height: 10));
     }
-    return QuizCompletedNames;
+    return ChallengeCompletedNames;
   }
 
   @override
@@ -100,7 +101,7 @@ class _QuizCompletedState extends State<QuizCompleted> {
     int score = widget.score;
     return Scaffold(
       appBar: AppBar(
-        // Here we take the value from the QuizCompleted object that was created by
+        // Here we take the value from the ChallengeCompleted object that was created by
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
       ),

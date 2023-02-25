@@ -20,10 +20,11 @@ class NavBar extends StatefulWidget {
 class _NavBarState extends State<NavBar> {
   int page = -1;
 
-  void _onPressed() {
-    setState(() {
-      //_pressed = 1;
-    });
+  void _onPressed(int index) {
+    String next = "/Categories";
+    if (index == 1) next = "/QOTD";
+    if (index == 2) next = "/Challenge";
+    Navigator.pushNamed(context, next);
   }
 
   @override
@@ -31,18 +32,19 @@ class _NavBarState extends State<NavBar> {
     page = widget.page;
     //widget.opttext;
     return Container(
-        height: 10,
-        width: 500,
-        child: BottomNavigationBar(
-          items: const <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-                icon: Icon(Icons.list), label: 'Categories'),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.date_range_sharp), label: 'Quiz of the Day'),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.star_border), label: 'Challenge Mode')
-          ],
-          currentIndex: page,
-        ));
+      height: 10,
+      width: 500,
+      child: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(icon: Icon(Icons.list), label: 'Categories'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.date_range_sharp), label: 'Quiz of the Day'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.star_border), label: 'Challenge Mode')
+        ],
+        currentIndex: page,
+        onTap: _onPressed,
+      ),
+    );
   }
 }

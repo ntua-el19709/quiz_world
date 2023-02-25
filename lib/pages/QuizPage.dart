@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(
+      home: const QuizPage(
         title: 'Flutter Demo Home Page',
         quiztitle: '1o quiz',
       ),
@@ -35,8 +35,8 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title, required this.quiztitle});
+class QuizPage extends StatefulWidget {
+  const QuizPage({super.key, required this.title, required this.quiztitle});
 
   // This widget is the home page of your application. It is stateful, meaning
   // that it has a State object (defined below) that contains fields that affect
@@ -50,10 +50,10 @@ class MyHomePage extends StatefulWidget {
   final String title, quiztitle;
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<QuizPage> createState() => _QuizPageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _QuizPageState extends State<QuizPage> {
   int _counter = 0;
 
   void _incrementCounter() {
@@ -79,7 +79,7 @@ class _MyHomePageState extends State<MyHomePage> {
     double heightsize = 100;
     return Scaffold(
       appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
+        // Here we take the value from the QuizPage object that was created by
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
       ),

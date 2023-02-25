@@ -227,7 +227,7 @@ class _ChallengeState extends State<Challenge> {
               Container(height: 20),
               Container(
                   height: 50,
-                  child: NavButton(btext: 'Take Challenge', next: 'djcsx')),
+                  child: NavButton(btext: 'Take Challenge', next: 'QuizPage')),
               Container(
                 height: 20,
               ),

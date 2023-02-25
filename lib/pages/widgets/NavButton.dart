@@ -24,9 +24,7 @@ class _NavButtonState extends State<NavButton> {
   int correct = 0; // 1 for correct, 0 for incorrect
 
   void _onPressed() {
-    setState(() {
-      _pressed = 1;
-    });
+    Navigator.pushNamed(context, '/' + widget.next);
   }
 
   @override

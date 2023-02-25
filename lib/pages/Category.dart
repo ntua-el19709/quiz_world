@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const Categories(
+      home: const Category(
         title: 'Flutter Demo Home Page',
         category: 'History',
       ),
@@ -37,8 +37,8 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class Categories extends StatefulWidget {
-  const Categories({super.key, required this.title, required this.category});
+class Category extends StatefulWidget {
+  const Category({super.key, required this.title, required this.category});
 
   // This widget is the home page of your application. It is stateful, meaning
   // that it has a State object (defined below) that contains fields that affect
@@ -52,10 +52,10 @@ class Categories extends StatefulWidget {
   final String category;
 
   @override
-  State<Categories> createState() => _CategoriesState();
+  State<Category> createState() => _CategoryState();
 }
 
-class _CategoriesState extends State<Categories> {
+class _CategoryState extends State<Category> {
   List<String> quizes = [
     'WW1',
     'WW2',
@@ -69,24 +69,17 @@ class _CategoriesState extends State<Categories> {
 
   int _counter = 0;
 
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
+  void _onPressed() {
+    Navigator.pushNamed(context, '/Categories');
   }
 
   List<Widget> getQuizes() {
-    List<Widget> CategoriesNames = [];
+    List<Widget> CategoryNames = [];
     for (int i = 0; i < 8; i++) {
-      CategoriesNames.add(NavButton(btext: quizes[i], next: quizes[i]));
-      CategoriesNames.add(Container(height: 10));
+      CategoryNames.add(NavButton(btext: quizes[i], next: 'QuizPage'));
+      CategoryNames.add(Container(height: 10));
     }
-    return CategoriesNames;
+    return CategoryNames;
   }
 
   @override
@@ -101,7 +94,7 @@ class _CategoriesState extends State<Categories> {
     String category = widget.category;
     return Scaffold(
       appBar: AppBar(
-        // Here we take the value from the Categories object that was created by
+        // Here we take the value from the Category object that was created by
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
       ),
@@ -167,7 +160,7 @@ class _CategoriesState extends State<Categories> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
+        onPressed: _onPressed,
         tooltip: 'Increment',
         backgroundColor: Color.fromARGB(210, 255, 255, 255),
         child: const Icon(
