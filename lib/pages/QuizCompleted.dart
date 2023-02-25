@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import './widgets/OptionButton.dart';
 import './widgets/Question.dart';
+import './widgets/NavBar.dart';
+import './widgets/NavButton.dart';
 
-/*void main() {
+void main() {
   runApp(const MyApp());
 }
-*/
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -27,16 +29,16 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(
+      home: const QuizCompleted(
         title: 'Flutter Demo Home Page',
-        quiztitle: '1o quiz',
+        score: 95,
       ),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title, required this.quiztitle});
+class QuizCompleted extends StatefulWidget {
+  const QuizCompleted({super.key, required this.title, required this.score});
 
   // This widget is the home page of your application. It is stateful, meaning
   // that it has a State object (defined below) that contains fields that affect
@@ -46,14 +48,24 @@ class MyHomePage extends StatefulWidget {
   // case the title) provided by the parent (in this case the App widget) and
   // used by the build method of the State. Fields in a Widget subclass are
   // always marked "final".
-
-  final String title, quiztitle;
-
+  final String title;
+  final int score;
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<QuizCompleted> createState() => _QuizCompletedState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _QuizCompletedState extends State<QuizCompleted> {
+  List<String> quizes = [
+    'WW1',
+    'WW2',
+    'Balkan Wars',
+    'Byzantium',
+    '1821',
+    'Quiz 6',
+    'Quiz 7',
+    'Quiz 8'
+  ];
+
   int _counter = 0;
 
   void _incrementCounter() {
@@ -67,9 +79,17 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  List<Widget> getQuizes() {
+    List<Widget> QuizCompletedNames = [];
+    for (int i = 0; i < 8; i++) {
+      QuizCompletedNames.add(NavButton(btext: quizes[i], next: quizes[i]));
+      QuizCompletedNames.add(Container(height: 10));
+    }
+    return QuizCompletedNames;
+  }
+
   @override
   Widget build(BuildContext context) {
-    String title = widget.quiztitle;
     // This method is rerun every time setState is called, for instance as done
     // by the _incrementCounter method above.
     //
@@ -77,9 +97,10 @@ class _MyHomePageState extends State<MyHomePage> {
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
     double heightsize = 100;
+    int score = widget.score;
     return Scaffold(
       appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
+        // Here we take the value from the QuizCompleted object that was created by
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
       ),
@@ -115,7 +136,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   height: heightsize,
                   child: Stack(
                     children: <Widget>[
-                      Text(title,
+                      Text('Quiz Completed',
                           style: TextStyle(
                             fontSize: 80,
                             foreground: Paint()
@@ -123,7 +144,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               ..strokeWidth = 6
                               ..color = Colors.black,
                           )),
-                      Text(title,
+                      Text('Quiz Completed',
                           style: TextStyle(
                             fontSize: 80,
                             color: Colors.white,
@@ -131,34 +152,66 @@ class _MyHomePageState extends State<MyHomePage> {
                     ],
                   )),
               Container(
-                height:
-                    MediaQuery.of(context).size.height - heightsize - 350 - 56,
+                height: MediaQuery.of(context).size.height - heightsize - 520,
               ),
               Container(
-                  height: 300,
-                  child: Question(
-                    qtext: 'Pos se laloun',
-                    opt1t: 'Kostis',
-                    opt2t: 'Giannis',
-                    opt3t: 'Agathoklis',
-                    opt4t: "Aristofanis",
-                    cor: 3,
-                    qnum: 1,
-                  )),
+                height: 200,
+                width: 200,
+                child: TextButton(
+                  //autofocus: false,
+                  //clipBehavior: Clip.none,
+                  style: ElevatedButton.styleFrom(
+                      //backgroundColor: Colors.black,
+                      primary: Color.fromARGB(210, 255, 255, 255),
+                      //onPrimary: Colors.white,
+                      //onSurface: Colors.purple,
+                      padding: EdgeInsets.symmetric(horizontal: 16.0),
+                      shape: const RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                      ),
+                      side: BorderSide(width: 3, color: Colors.black)),
+                  onPressed: () {},
+                  child: Text('SCORE\n\n    $score',
+                      style: TextStyle(
+                        fontSize: 40,
+                        color: Colors.black,
+                      )),
+                ),
+              ),
+              Container(height: 150),
               Container(
-                height: 50,
+                height: heightsize,
+                child: Stack(
+                  children: <Widget>[
+                    Text('Click anywhere to continue',
+                        style: TextStyle(
+                          fontSize: 15,
+                          foreground: Paint()
+                            ..style = PaintingStyle.stroke
+                            ..strokeWidth = 6
+                            ..color = Colors.black,
+                        )),
+                    Text('Click anywhere to continue',
+                        style: TextStyle(
+                          fontSize: 15,
+                          color: Colors.white,
+                        )),
+                  ],
+                ),
               ),
             ],
           ),
         ),
       ),
-      /*
-      floatingActionButton: FloatingActionButton(
+      /*floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ),
-      */ // This trailing comma makes auto-formatting nicer for build methods.
+        backgroundColor: Color.fromARGB(210, 255, 255, 255),
+        child: const Icon(
+          Icons.arrow_back,
+          color: Colors.purple,
+        ),
+      ),*/
     );
   }
 }

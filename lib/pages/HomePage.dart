@@ -130,9 +130,22 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               Container(
                 height: heightsize,
-                child: Text(
-                  'Tap anywhere to continue',
-                  style: Theme.of(context).textTheme.headlineMedium,
+                child: Stack(
+                  children: <Widget>[
+                    Text('Click anywhere to continue',
+                        style: TextStyle(
+                          fontSize: 15,
+                          foreground: Paint()
+                            ..style = PaintingStyle.stroke
+                            ..strokeWidth = 6
+                            ..color = Colors.black,
+                        )),
+                    Text('Click anywhere to continue',
+                        style: TextStyle(
+                          fontSize: 15,
+                          color: Colors.white,
+                        )),
+                  ],
                 ),
               ),
             ],
