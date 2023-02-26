@@ -13,6 +13,7 @@ class NavBar extends StatefulWidget {
   // used by the build method of the State. Fields in a Widget subclass are
   // always marked "final".
   final int page;
+
   @override
   State<NavBar> createState() => _NavBarState();
 }

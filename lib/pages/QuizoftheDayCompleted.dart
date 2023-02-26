@@ -5,38 +5,6 @@ import './widgets/Question.dart';
 import './widgets/NavBar.dart';
 import './widgets/NavButton.dart';
 
-void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.blue,
-      ),
-      home: const QuizoftheDayCompleted(
-        title: 'Flutter Demo Home Page',
-        score: 95,
-      ),
-    );
-  }
-}
-
 class QuizoftheDayCompleted extends StatefulWidget {
   const QuizoftheDayCompleted(
       {super.key, required this.title, required this.score});
@@ -77,7 +45,7 @@ class _QuizoftheDayCompletedState extends State<QuizoftheDayCompleted> {
     List<Widget> QuizoftheDayCompletedNames = [];
     for (int i = 0; i < 8; i++) {
       QuizoftheDayCompletedNames.add(
-          NavButton(btext: quizes[i], next: quizes[i]));
+          NavButton(btext: quizes[i], next: quizes[i], eP: () {}));
       QuizoftheDayCompletedNames.add(Container(height: 10));
     }
     return QuizoftheDayCompletedNames;

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:my_app/pages/Category.dart';
+import 'package:my_app/pages/widgets/eventPressed.dart';
 import 'package:my_app/pages/ChallengeMode.dart';
 import 'package:my_app/pages/QuizoftheDay.dart';
 import './pages/widgets/OptionButton.dart';
@@ -13,6 +14,7 @@ import './pages/QuizoftheDayCompleted.dart';
 import './pages/ChallengeCompleted.dart';
 import './pages/QuizCompleted.dart';
 import './pages/QuizPage.dart';
+import 'package:event/event.dart';
 
 void main() {
   runApp(const MyApp());
@@ -42,7 +44,7 @@ class MyApp extends StatelessWidget {
         '/': (context) => HomePage(title: 'Flutter Demo'),
         '/Categories': (context) => Categories(title: 'Flutter Demo'),
         '/Challenge': (context) => Challenge(title: 'Flutter Demo'),
-        '/QOTD': (context) => QuizoftheDay(title: 'Flutter Demo', days: 10),
+        '/QOTD': (context) => QuizoftheDay(title: 'Flutter Demo'),
         '/Category': (context) =>
             Category(title: 'Flutter Demo', category: 'History'),
         '/QuizCompleted': (context) =>

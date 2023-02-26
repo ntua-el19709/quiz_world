@@ -1,41 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:my_app/pages/widgets/eventPressed.dart';
 import './widgets/OptionButton.dart';
 import './widgets/Question.dart';
 import './widgets/NavBar.dart';
 import './widgets/NavButton.dart';
-
-void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.blue,
-      ),
-      home: const QuizoftheDay(title: 'Flutter Demo Home Page', days: 30),
-    );
-  }
-}
+import 'package:event/event.dart';
 
 class QuizoftheDay extends StatefulWidget {
-  const QuizoftheDay({super.key, required this.title, required this.days});
+  const QuizoftheDay({super.key, required this.title});
 
   // This widget is the home page of your application. It is stateful, meaning
   // that it has a State object (defined below) that contains fields that affect
@@ -47,7 +20,6 @@ class QuizoftheDay extends StatefulWidget {
   // always marked "final".
 
   final String title;
-  final int days;
 
   @override
   State<QuizoftheDay> createState() => _QuizoftheDayState();
@@ -55,8 +27,7 @@ class QuizoftheDay extends StatefulWidget {
 
 class _QuizoftheDayState extends State<QuizoftheDay> {
   int _counter = 0;
-
-  void _incrementCounter() {
+  void _onPressed() {
     setState(() {
       // This call to setState tells the Flutter framework that something has
       // changed in this State, which causes it to rerun the build method below
@@ -65,17 +36,21 @@ class _QuizoftheDayState extends State<QuizoftheDay> {
       // called again, and so nothing would appear to happen.
       _counter++;
     });
+    print(_counter);
   }
 
+  //var eP = EventPressed();
   @override
   Widget build(BuildContext context) {
-    int days = widget.days;
     // This method is rerun every time setState is called, for instance as done
     // by the _incrementCounter method above.
     //
     // The Flutter framework has been optimized to make rerunning build methods
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
+
+    //eP.Pressed.subscribe((args) => print(eP.value));
+    //print(eP.value);
     double heightsize = 100;
     return Scaffold(
       /*appBar: AppBar(
@@ -155,7 +130,8 @@ class _QuizoftheDayState extends State<QuizoftheDay> {
                       ),
                       side: BorderSide(width: 3, color: Colors.black)),
                   onPressed: () {},
-                  child: Text('Daily Streak\n\n        $days',
+                  child: Text('Daily Streak\n\n$_counter',
+                      textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 30,
                         color: Colors.black,
@@ -168,10 +144,15 @@ class _QuizoftheDayState extends State<QuizoftheDay> {
                         124) /
                     2,
               ),
-              Container(
-                  height: 50,
-                  child: NavButton(
-                      btext: 'Take Quiz of the Day', next: 'QuizPage')),
+              GestureDetector(
+                  onTap: _onPressed,
+                  child: Container(
+                      height: 50,
+                      child: NavButton(
+                        btext: 'Take Quiz of the Day',
+                        next: 'QuizPage',
+                        eP: _onPressed,
+                      ))),
               Container(
                 height: 20,
               ),

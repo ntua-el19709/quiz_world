@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:event/event.dart';
+import 'package:my_app/pages/widgets/eventPressed.dart';
 
 class NavButton extends StatefulWidget {
-  const NavButton({super.key, required this.btext, required this.next});
+  const NavButton(
+      {super.key, required this.btext, required this.next, required this.eP});
 
   // This widget is the home page of your application. It is stateful, meaning
   // that it has a State object (defined below) that contains fields that affect
@@ -15,6 +18,7 @@ class NavButton extends StatefulWidget {
 
   final String btext;
   final String next;
+  final Function eP;
   @override
   State<NavButton> createState() => _NavButtonState();
 }
@@ -25,6 +29,8 @@ class _NavButtonState extends State<NavButton> {
 
   void _onPressed() {
     Navigator.pushNamed(context, '/' + widget.next);
+    print('pressed');
+    widget.eP();
   }
 
   @override
