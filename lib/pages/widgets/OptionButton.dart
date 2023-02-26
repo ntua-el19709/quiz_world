@@ -2,7 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
 class OptionButton extends StatefulWidget {
-  const OptionButton({super.key, required this.opttext, required this.correct});
+  const OptionButton(
+      {super.key,
+      required this.opttext,
+      required this.correct,
+      required this.answered,
+      required this.eP});
 
   // This widget is the home page of your application. It is stateful, meaning
   // that it has a State object (defined below) that contains fields that affect
@@ -15,21 +20,29 @@ class OptionButton extends StatefulWidget {
 
   final String opttext;
   final int correct;
+  final Function eP;
+  final int answered;
   @override
   State<OptionButton> createState() => _OptionButtonState();
 }
 
 class _OptionButtonState extends State<OptionButton> {
   int _pressed = 0;
+  int answered = 1;
   int correct = 0; // 1 for correct, 0 for incorrect
 
   void _onPressed() {
-    setState(() {
-      _pressed = 1;
-    });
+    widget.eP();
+    if (answered == 0) {
+      setState(() {
+        _pressed = 1;
+      });
+      answered = 1;
+    }
   }
 
   MaterialColor _getColor() {
+    if (answered == 1 && correct == 1) return Colors.green;
     if (_pressed == 0) return Colors.purple;
     if (correct == 1) return Colors.green;
     return Colors.red;
@@ -37,6 +50,7 @@ class _OptionButtonState extends State<OptionButton> {
 
   @override
   Widget build(BuildContext context) {
+    answered = widget.answered;
     correct = widget.correct;
     //widget.opttext;
     return Container(

@@ -30,6 +30,12 @@ class _QuizPageState extends State<QuizPage> {
   //OptionSelected.subscribe( (args) => answered=1);
 
   void _onPressed() {
+    setState(() {
+      answered = 1;
+    });
+  }
+
+  void _onPressedNext() {
     if (answered == 1) Navigator.pushNamed(context, "/QuizCompleted");
   }
 
@@ -50,7 +56,7 @@ class _QuizPageState extends State<QuizPage> {
           title: Text(widget.title),
         ),*/
         body: GestureDetector(
-      onTap: _onPressed,
+      onTap: _onPressedNext,
       child: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
@@ -112,6 +118,8 @@ class _QuizPageState extends State<QuizPage> {
                     opt4t: "Aristofanis",
                     cor: 3,
                     qnum: 1,
+                    eP: _onPressed,
+                    ePN: _onPressedNext,
                   )),
             ],
           ),

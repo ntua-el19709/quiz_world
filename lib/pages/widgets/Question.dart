@@ -11,7 +11,9 @@ class Question extends StatefulWidget {
       required this.opt3t,
       required this.opt4t,
       required this.cor,
-      required this.qnum});
+      required this.qnum,
+      required this.eP,
+      required this.ePN});
 
   // This widget is the home page of your application. It is stateful, meaning
   // that it has a State object (defined below) that contains fields that affect
@@ -29,7 +31,8 @@ class Question extends StatefulWidget {
   final String opt4t;
   final int cor;
   final int qnum;
-
+  final Function eP;
+  final Function ePN;
   @override
   State<Question> createState() => _QuestionState();
 }
@@ -38,13 +41,23 @@ class _QuestionState extends State<Question> {
   int _pressed = 0;
   int qnum = 0;
   int cor1 = 0, cor2 = 0, cor3 = 0, cor4 = 0; // 1 for correct, 0 for incorrect
-/*
+
   void _onPressed() {
-    setState(() {
-      _pressed = 1;
-    });
+    if (_pressed == 0) {
+      setState(() {
+        _pressed = 1;
+      });
+      widget.eP();
+    } else {
+      widget.ePN();
+    }
   }
-  */
+
+  void _onPressedNext() {
+    print('question pressed');
+    if (_pressed == 1) widget.ePN();
+  }
+
 /*
   MaterialColor _getColor() {
     if (_pressed == 0) return Colors.purple;
@@ -74,7 +87,7 @@ class _QuestionState extends State<Question> {
                   borderRadius: BorderRadius.all(Radius.circular(20.0)),
                 ),
                 side: BorderSide(width: 5, color: Colors.black)),
-            onPressed: () {},
+            onPressed: _onPressedNext,
             child: Column(//backgroundColor: Color.fromARGB(210, 255, 255, 255)
                 children: <Widget>[
               Container(height: 10),
@@ -92,22 +105,42 @@ class _QuestionState extends State<Question> {
               Container(
                   height: 50,
                   width: widthsize - 40,
-                  child: OptionButton(correct: cor1, opttext: widget.opt1t)),
+                  child: OptionButton(
+                    correct: cor1,
+                    opttext: widget.opt1t,
+                    answered: _pressed,
+                    eP: _onPressed,
+                  )),
               Container(height: 10),
               Container(
                   height: 50,
                   width: widthsize - 40,
-                  child: OptionButton(correct: cor2, opttext: widget.opt2t)),
+                  child: OptionButton(
+                    correct: cor2,
+                    opttext: widget.opt2t,
+                    answered: _pressed,
+                    eP: _onPressed,
+                  )),
               Container(height: 10),
               Container(
                   height: 50,
                   width: widthsize - 40,
-                  child: OptionButton(correct: cor3, opttext: widget.opt3t)),
+                  child: OptionButton(
+                    correct: cor3,
+                    opttext: widget.opt3t,
+                    eP: _onPressed,
+                    answered: _pressed,
+                  )),
               Container(height: 10),
               Container(
                   height: 50,
                   width: widthsize - 40,
-                  child: OptionButton(correct: cor4, opttext: widget.opt4t)),
+                  child: OptionButton(
+                    correct: cor4,
+                    opttext: widget.opt4t,
+                    eP: _onPressed,
+                    answered: _pressed,
+                  )),
               Container(height: 10),
             ])));
   }
