@@ -124,13 +124,13 @@ class _ChallengeState extends State<Challenge> {
     // The Flutter framework has been optimized to make rerunning build methods
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
-    double heightsize = 100;
+    double heightsize = 80;
     return Scaffold(
-      appBar: AppBar(
+      /*appBar: AppBar(
         // Here we take the value from the Challenge object that was created by
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
-      ),
+      ),*/
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
@@ -160,20 +160,22 @@ class _ChallengeState extends State<Challenge> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
               Container(
-                  height: heightsize,
+                  height: 2 * heightsize,
                   child: Stack(
                     children: <Widget>[
-                      Text('Challenge Mode',
+                      Text('Challenge\nMode',
+                          textAlign: TextAlign.center,
                           style: TextStyle(
-                            fontSize: 80,
+                            fontSize: 70,
                             foreground: Paint()
                               ..style = PaintingStyle.stroke
                               ..strokeWidth = 6
                               ..color = Colors.black,
                           )),
-                      Text('Challenge Mode',
+                      Text('Challenge\nMode',
+                          textAlign: TextAlign.center,
                           style: TextStyle(
-                            fontSize: 80,
+                            fontSize: 70,
                             color: Colors.white,
                           )),
                     ],
@@ -184,7 +186,7 @@ class _ChallengeState extends State<Challenge> {
                     children: <Widget>[
                       Text('Ranking',
                           style: TextStyle(
-                            fontSize: 50,
+                            fontSize: 40,
                             foreground: Paint()
                               ..style = PaintingStyle.stroke
                               ..strokeWidth = 6
@@ -192,17 +194,19 @@ class _ChallengeState extends State<Challenge> {
                           )),
                       Text('Ranking',
                           style: TextStyle(
-                            fontSize: 50,
+                            fontSize: 40,
                             color: Colors.white,
                           )),
                     ],
                   )),
               Container(
-                height:
-                    MediaQuery.of(context).size.height - 2 * heightsize - 455,
+                height: (MediaQuery.of(context).size.height -
+                        6 * heightsize -
+                        124) /
+                    2,
               ),
               Container(
-                height: 250,
+                height: 3 * heightsize,
                 width: 500,
                 child: TextButton(
                     //autofocus: false,
@@ -224,7 +228,11 @@ class _ChallengeState extends State<Challenge> {
                       children: getRanking(),
                     ))),
               ),
-              Container(height: 20),
+              Container(
+                  height: (MediaQuery.of(context).size.height -
+                          6 * heightsize -
+                          124) /
+                      2),
               Container(
                   height: 50,
                   child: NavButton(btext: 'Take Challenge', next: 'QuizPage')),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import './widgets/OptionButton.dart';
 import './widgets/Question.dart';
+import 'package:event/event.dart';
 
 /*void main() {
   runApp(const MyApp());
@@ -54,17 +55,14 @@ class QuizPage extends StatefulWidget {
 }
 
 class _QuizPageState extends State<QuizPage> {
-  int _counter = 0;
+  int _counter = 0, answered = 0;
 
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
+  final OptionSelected = Event();
+
+  //OptionSelected.subscribe( (args) => answered=1);
+
+  void _onPressed() {
+    if (answered == 1) Navigator.pushNamed(context, "/QuizCompleted");
   }
 
   @override
@@ -78,12 +76,14 @@ class _QuizPageState extends State<QuizPage> {
     // than having to individually change instances of widgets.
     double heightsize = 100;
     return Scaffold(
-      appBar: AppBar(
-        // Here we take the value from the QuizPage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
-      body: Container(
+        /*appBar: AppBar(
+          // Here we take the value from the QuizPage object that was created by
+          // the App.build method, and use it to set our appbar title.
+          title: Text(widget.title),
+        ),*/
+        body: GestureDetector(
+      onTap: _onPressed,
+      child: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
             image: AssetImage("../background.png"),
@@ -132,10 +132,10 @@ class _QuizPageState extends State<QuizPage> {
                   )),
               Container(
                 height:
-                    MediaQuery.of(context).size.height - heightsize - 350 - 56,
+                    (MediaQuery.of(context).size.height - 5 * heightsize) / 3,
               ),
               Container(
-                  height: 300,
+                  height: 4 * heightsize,
                   child: Question(
                     qtext: 'Pos se laloun',
                     opt1t: 'Kostis',
@@ -145,20 +145,18 @@ class _QuizPageState extends State<QuizPage> {
                     cor: 3,
                     qnum: 1,
                   )),
-              Container(
-                height: 50,
-              ),
             ],
           ),
         ),
       ),
-      /*
+    )
+        /*
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ),
       */ // This trailing comma makes auto-formatting nicer for build methods.
-    );
+        );
   }
 }

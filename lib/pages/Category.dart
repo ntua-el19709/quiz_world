@@ -93,11 +93,11 @@ class _CategoryState extends State<Category> {
     double heightsize = 100;
     String category = widget.category;
     return Scaffold(
-      appBar: AppBar(
+      /*appBar: AppBar(
         // Here we take the value from the Category object that was created by
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
-      ),
+      ),*/
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
@@ -146,10 +146,10 @@ class _CategoryState extends State<Category> {
                     ],
                   )),
               Container(
-                height: MediaQuery.of(context).size.height - heightsize - 520,
+                height: 20,
               ),
               Container(
-                  height: 364,
+                  height: MediaQuery.of(context).size.height - heightsize - 20,
                   width: 500,
                   child: ListView(
                     shrinkWrap: true,

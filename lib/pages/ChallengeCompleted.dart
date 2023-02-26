@@ -69,15 +69,8 @@ class _ChallengeCompletedState extends State<ChallengeCompleted> {
 
   int _counter = 0;
 
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
+  void _onPressed() {
+    Navigator.pushNamed(context, "/Challenge");
   }
 
   List<Widget> getQuizes() {
@@ -100,12 +93,14 @@ class _ChallengeCompletedState extends State<ChallengeCompleted> {
     double heightsize = 100;
     int score = widget.score;
     return Scaffold(
-      appBar: AppBar(
-        // Here we take the value from the ChallengeCompleted object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
-      body: Container(
+        /*appBar: AppBar(
+          // Here we take the value from the ChallengeCompleted object that was created by
+          // the App.build method, and use it to set our appbar title.
+          title: Text(widget.title),
+        ),*/
+        body: GestureDetector(
+      onTap: _onPressed,
+      child: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
             image: AssetImage("../background.png"),
@@ -134,10 +129,11 @@ class _ChallengeCompletedState extends State<ChallengeCompleted> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
               Container(
-                  height: heightsize,
+                  height: 2 * heightsize,
                   child: Stack(
                     children: <Widget>[
-                      Text('Challenge Completed',
+                      Text('Challenge\nCompleted',
+                          textAlign: TextAlign.center,
                           style: TextStyle(
                             fontSize: 80,
                             foreground: Paint()
@@ -145,7 +141,8 @@ class _ChallengeCompletedState extends State<ChallengeCompleted> {
                               ..strokeWidth = 6
                               ..color = Colors.black,
                           )),
-                      Text('Challenge Completed',
+                      Text('Challenge\nCompleted',
+                          textAlign: TextAlign.center,
                           style: TextStyle(
                             fontSize: 80,
                             color: Colors.white,
@@ -153,10 +150,12 @@ class _ChallengeCompletedState extends State<ChallengeCompleted> {
                     ],
                   )),
               Container(
-                height: MediaQuery.of(context).size.height - heightsize - 520,
+                height:
+                    (MediaQuery.of(context).size.height - 5 * heightsize - 70) /
+                        2,
               ),
               Container(
-                height: 200,
+                height: 2 * heightsize,
                 width: 200,
                 child: TextButton(
                   //autofocus: false,
@@ -179,7 +178,11 @@ class _ChallengeCompletedState extends State<ChallengeCompleted> {
                       )),
                 ),
               ),
-              Container(height: 20),
+              Container(
+                height:
+                    (MediaQuery.of(context).size.height - 5 * heightsize - 70) /
+                        2,
+              ),
               Container(
                 height: 50,
                 width: 500,
@@ -221,7 +224,8 @@ class _ChallengeCompletedState extends State<ChallengeCompleted> {
           ),
         ),
       ),
-      /*floatingActionButton: FloatingActionButton(
+    )
+        /*floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',
         backgroundColor: Color.fromARGB(210, 255, 255, 255),
@@ -230,6 +234,6 @@ class _ChallengeCompletedState extends State<ChallengeCompleted> {
           color: Colors.purple,
         ),
       ),*/
-    );
+        );
   }
 }

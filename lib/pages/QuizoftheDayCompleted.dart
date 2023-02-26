@@ -69,15 +69,8 @@ class _QuizoftheDayCompletedState extends State<QuizoftheDayCompleted> {
 
   int _counter = 0;
 
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
+  void _onPressed() {
+    Navigator.pushNamed(context, "/QOTD");
   }
 
   List<Widget> getQuizes() {
@@ -101,12 +94,14 @@ class _QuizoftheDayCompletedState extends State<QuizoftheDayCompleted> {
     double heightsize = 100;
     int score = widget.score;
     return Scaffold(
-      appBar: AppBar(
-        // Here we take the value from the QuizoftheDayCompleted object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
-      body: Container(
+        /*appBar: AppBar(
+          // Here we take the value from the QuizoftheDayCompleted object that was created by
+          // the App.build method, and use it to set our appbar title.
+          title: Text(widget.title),
+        ),*/
+        body: GestureDetector(
+      onTap: _onPressed,
+      child: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
             image: AssetImage("../background.png"),
@@ -135,10 +130,11 @@ class _QuizoftheDayCompletedState extends State<QuizoftheDayCompleted> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
               Container(
-                  height: heightsize,
+                  height: 3 * heightsize,
                   child: Stack(
                     children: <Widget>[
-                      Text('Quiz of the Day Completed',
+                      Text('Quiz of the\nDay\nCompleted',
+                          textAlign: TextAlign.center,
                           style: TextStyle(
                             fontSize: 80,
                             foreground: Paint()
@@ -146,7 +142,8 @@ class _QuizoftheDayCompletedState extends State<QuizoftheDayCompleted> {
                               ..strokeWidth = 6
                               ..color = Colors.black,
                           )),
-                      Text('Quiz of the Day Completed',
+                      Text('Quiz of the\nDay\nCompleted',
+                          textAlign: TextAlign.center,
                           style: TextStyle(
                             fontSize: 80,
                             color: Colors.white,
@@ -154,9 +151,8 @@ class _QuizoftheDayCompletedState extends State<QuizoftheDayCompleted> {
                     ],
                   )),
               Container(
-                height: MediaQuery.of(context).size.height - heightsize - 520,
+                height: MediaQuery.of(context).size.height - 4 * heightsize,
               ),
-              Container(height: 150),
               Container(
                 height: heightsize,
                 child: Stack(
@@ -181,7 +177,8 @@ class _QuizoftheDayCompletedState extends State<QuizoftheDayCompleted> {
           ),
         ),
       ),
-      /*floatingActionButton: FloatingActionButton(
+    )
+        /*floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',
         backgroundColor: Color.fromARGB(210, 255, 255, 255),
@@ -190,6 +187,6 @@ class _QuizoftheDayCompletedState extends State<QuizoftheDayCompleted> {
           color: Colors.purple,
         ),
       ),*/
-    );
+        );
   }
 }

@@ -89,22 +89,22 @@ class _QuestionState extends State<Question> {
                       style: TextStyle(fontSize: 40, color: Colors.black))),
               Container(height: 20),
               Container(
-                  height: 30,
+                  height: 50,
                   width: 500,
                   child: OptionButton(correct: cor1, opttext: widget.opt1t)),
               Container(height: 10),
               Container(
-                  height: 30,
+                  height: 50,
                   width: 500,
                   child: OptionButton(correct: cor2, opttext: widget.opt2t)),
               Container(height: 10),
               Container(
-                  height: 30,
+                  height: 50,
                   width: 500,
                   child: OptionButton(correct: cor3, opttext: widget.opt3t)),
               Container(height: 10),
               Container(
-                  height: 30,
+                  height: 50,
                   width: 500,
                   child: OptionButton(correct: cor4, opttext: widget.opt4t)),
               Container(height: 10),

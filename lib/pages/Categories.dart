@@ -96,11 +96,11 @@ class _CategoriesState extends State<Categories> {
     // than having to individually change instances of widgets.
     double heightsize = 100;
     return Scaffold(
-      appBar: AppBar(
+      /*appBar: AppBar(
         // Here we take the value from the Categories object that was created by
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
-      ),
+      ),*/
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
@@ -149,10 +149,10 @@ class _CategoriesState extends State<Categories> {
                     ],
                   )),
               Container(
-                height: MediaQuery.of(context).size.height - heightsize - 520,
+                height: 20,
               ),
               Container(
-                  height: 300,
+                  height: MediaQuery.of(context).size.height - heightsize - 94,
                   width: 500,
                   child: ListView(
                     shrinkWrap: true,

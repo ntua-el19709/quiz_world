@@ -65,11 +65,11 @@ class _HomePageState extends State<HomePage> {
     // than having to individually change instances of widgets.
     double heightsize = 100;
     return Scaffold(
-      appBar: AppBar(
+      /*appBar: AppBar(
         // Here we take the value from the HomePage object that was created by
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
-      ),
+      ),*/
       body: GestureDetector(
           onTap: _onPressed,
           child: Container(
@@ -101,10 +101,11 @@ class _HomePageState extends State<HomePage> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
                   Container(
-                      height: heightsize,
+                      height: 2 * heightsize,
                       child: Stack(
                         children: <Widget>[
-                          Text('QUIZ WORLD',
+                          Text('QUIZ\nWORLD',
+                              textAlign: TextAlign.center,
                               style: TextStyle(
                                 fontSize: 80,
                                 foreground: Paint()
@@ -112,7 +113,8 @@ class _HomePageState extends State<HomePage> {
                                   ..strokeWidth = 6
                                   ..color = Colors.black,
                               )),
-                          Text('QUIZ WORLD',
+                          Text('QUIZ\nWORLD',
+                              textAlign: TextAlign.center,
                               style: TextStyle(
                                 fontSize: 80,
                                 color: Colors.white,
@@ -120,9 +122,7 @@ class _HomePageState extends State<HomePage> {
                         ],
                       )),
                   Container(
-                    height: MediaQuery.of(context).size.height -
-                        2 * heightsize -
-                        56,
+                    height: MediaQuery.of(context).size.height - 3 * heightsize,
                   ),
                   Container(
                     height: heightsize,

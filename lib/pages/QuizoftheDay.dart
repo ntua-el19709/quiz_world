@@ -78,11 +78,11 @@ class _QuizoftheDayState extends State<QuizoftheDay> {
     // than having to individually change instances of widgets.
     double heightsize = 100;
     return Scaffold(
-      appBar: AppBar(
+      /*appBar: AppBar(
         // Here we take the value from the QuizoftheDay object that was created by
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
-      ),
+      ),*/
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
@@ -112,10 +112,11 @@ class _QuizoftheDayState extends State<QuizoftheDay> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
               Container(
-                  height: heightsize,
+                  height: 2 * heightsize,
                   child: Stack(
                     children: <Widget>[
-                      Text('Quiz of the Day',
+                      Text('Quiz of the\nDay',
+                          textAlign: TextAlign.center,
                           style: TextStyle(
                             fontSize: 80,
                             foreground: Paint()
@@ -123,7 +124,8 @@ class _QuizoftheDayState extends State<QuizoftheDay> {
                               ..strokeWidth = 6
                               ..color = Colors.black,
                           )),
-                      Text('Quiz of the Day',
+                      Text('Quiz of the\nDay',
+                          textAlign: TextAlign.center,
                           style: TextStyle(
                             fontSize: 80,
                             color: Colors.white,
@@ -131,10 +133,13 @@ class _QuizoftheDayState extends State<QuizoftheDay> {
                     ],
                   )),
               Container(
-                height: MediaQuery.of(context).size.height - heightsize - 420,
+                height: (MediaQuery.of(context).size.height -
+                        4 * heightsize -
+                        124) /
+                    2,
               ),
               Container(
-                height: 200,
+                height: 2 * heightsize,
                 width: 200,
                 child: TextButton(
                   //autofocus: false,
@@ -158,7 +163,10 @@ class _QuizoftheDayState extends State<QuizoftheDay> {
                 ),
               ),
               Container(
-                height: 40,
+                height: (MediaQuery.of(context).size.height -
+                        4 * heightsize -
+                        124) /
+                    2,
               ),
               Container(
                   height: 50,
