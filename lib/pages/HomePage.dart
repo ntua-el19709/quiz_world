@@ -77,6 +77,7 @@ class _HomePageState extends State<HomePage> {
               image: DecorationImage(
                 image: AssetImage("../background.png"),
                 fit: BoxFit.cover,
+                //clipBehavior: Clip.hardEdge
               ),
             ),
             child: Center(

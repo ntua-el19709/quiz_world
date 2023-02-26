@@ -33,7 +33,7 @@ class _NavBarState extends State<NavBar> {
     //widget.opttext;
     return Container(
       height: 10,
-      width: 500,
+      width: MediaQuery.of(context).size.width,
       child: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(icon: Icon(Icons.list), label: 'Categories'),

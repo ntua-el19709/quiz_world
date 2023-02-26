@@ -41,7 +41,7 @@ class _OptionButtonState extends State<OptionButton> {
     //widget.opttext;
     return Container(
         height: 30,
-        width: 500,
+        width: MediaQuery.of(context).size.width - 40,
         child: TextButton(
           //autofocus: false,
           //clipBehavior: Clip.none,

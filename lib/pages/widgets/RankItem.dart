@@ -43,54 +43,43 @@ class _RankItemState extends State<RankItem> {
     num = widget.num;
     score = widget.score;
     name = widget.name;
-    double length = 500 - 202 - name.runes.length.toDouble();
     //widget.opttext;
     return Container(
-        height: 30,
-        width: 500,
-        child: TextButton(
-          //autofocus: false,
-          //clipBehavior: Clip.none,
-          style: ElevatedButton.styleFrom(
-            //backgroundColor: Colors.black,
-            //primary: Color.fromARGB(210, 255, 255, 255),
-            //onSurface: Colors.purple,
-            padding: EdgeInsets.symmetric(horizontal: 16.0),
-            //side: BorderSide(width: 1, color: Colors.black)
+      height: 30,
+      width: MediaQuery.of(context).size.width - 20,
+      child:
+          Row(crossAxisAlignment: CrossAxisAlignment.start, children: <Widget>[
+        Container(
+          width: 50,
+          child: ElevatedButton(
+            onPressed: () {},
+            style: ElevatedButton.styleFrom(
+              primary: Color.fromARGB(255, 255, 193, 203),
+              shape: const CircleBorder(),
+            ),
+            child: Text(
+              '$num',
+              style: TextStyle(color: Colors.black),
+            ),
           ),
-          onPressed: () {},
-          child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Container(
-                  child: ElevatedButton(
-                    onPressed: () {},
-                    style: ElevatedButton.styleFrom(
-                      primary: Color.fromARGB(255, 255, 193, 203),
-                      shape: const CircleBorder(),
-                    ),
-                    child: Text(
-                      '$num',
-                      style: TextStyle(color: Colors.black),
-                    ),
-                  ),
-                ),
-                Container(
-                  width: 300,
-                  child: Center(
-                      child: Text(
-                    name,
-                    style: TextStyle(color: Colors.black),
-                  )),
-                ),
-                Container(
-                  child: Center(
-                      child: Text(
-                    '$score',
-                    style: TextStyle(color: Colors.black),
-                  )),
-                ),
-              ]),
-        ));
+        ),
+        Container(
+          width: MediaQuery.of(context).size.width - 218,
+          child: Center(
+              child: Text(
+            name,
+            style: TextStyle(color: Colors.black),
+          )),
+        ),
+        Container(
+          width: 100,
+          child: Center(
+              child: Text(
+            '$score',
+            style: TextStyle(color: Colors.black),
+          )),
+        ),
+      ]),
+    );
   }
 }

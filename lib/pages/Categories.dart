@@ -153,7 +153,7 @@ class _CategoriesState extends State<Categories> {
               ),
               Container(
                   height: MediaQuery.of(context).size.height - heightsize - 94,
-                  width: 500,
+                  width: MediaQuery.of(context).size.width - 20,
                   child: ListView(
                     shrinkWrap: true,
                     children: getCats(),

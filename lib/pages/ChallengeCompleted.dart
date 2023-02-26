@@ -185,7 +185,7 @@ class _ChallengeCompletedState extends State<ChallengeCompleted> {
               ),
               Container(
                 height: 50,
-                width: 500,
+                width: MediaQuery.of(context).size.width - 20,
                 child: TextFormField(
                   decoration: InputDecoration(
                     enabledBorder: OutlineInputBorder(

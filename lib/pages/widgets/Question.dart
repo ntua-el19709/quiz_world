@@ -60,8 +60,9 @@ class _QuestionState extends State<Question> {
     if (widget.cor == 3) cor3 = 1;
     if (widget.cor == 4) cor4 = 1;
     //widget.opttext;
+    double widthsize = MediaQuery.of(context).size.width;
     return Container(
-        width: 600,
+        width: widthsize - 20,
         height: 280,
         child: TextButton(
             style: ElevatedButton.styleFrom(
@@ -90,22 +91,22 @@ class _QuestionState extends State<Question> {
               Container(height: 20),
               Container(
                   height: 50,
-                  width: 500,
+                  width: widthsize - 40,
                   child: OptionButton(correct: cor1, opttext: widget.opt1t)),
               Container(height: 10),
               Container(
                   height: 50,
-                  width: 500,
+                  width: widthsize - 40,
                   child: OptionButton(correct: cor2, opttext: widget.opt2t)),
               Container(height: 10),
               Container(
                   height: 50,
-                  width: 500,
+                  width: widthsize - 40,
                   child: OptionButton(correct: cor3, opttext: widget.opt3t)),
               Container(height: 10),
               Container(
                   height: 50,
-                  width: 500,
+                  width: widthsize - 40,
                   child: OptionButton(correct: cor4, opttext: widget.opt4t)),
               Container(height: 10),
             ])));

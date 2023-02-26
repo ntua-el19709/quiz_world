@@ -33,7 +33,7 @@ class _NavButtonState extends State<NavButton> {
     //widget.btext;
     return Container(
         height: 50,
-        width: 500,
+        width: MediaQuery.of(context).size.width - 20,
         child: TextButton(
           //autofocus: false,
           //clipBehavior: Clip.none,
