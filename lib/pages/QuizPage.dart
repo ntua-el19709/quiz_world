@@ -3,6 +3,8 @@ import 'package:flutter/rendering.dart';
 import './widgets/Question.dart';
 import './widgets/Arguments.dart';
 
+import 'package:audioplayers/audioplayers.dart';
+
 class QuizPage extends StatefulWidget {
   static const routeName = '/QuizPage';
   const QuizPage({
@@ -22,6 +24,7 @@ class QuizPage extends StatefulWidget {
 class _QuizPageState extends State<QuizPage> {
   int answered = 0, score = 0;
   String type = "";
+  final player = AudioCache();
 
   void _onPressed(int cor) {
     if (cor == 1)
@@ -42,9 +45,11 @@ class _QuizPageState extends State<QuizPage> {
     } else if (type == 'Quiz' && answered == 1) {
       Navigator.pushNamed(context, '/QuizPage',
           arguments: QuizArguments(type, score - 1, widget.title));
-    } else
+    } else {
+      player.play('sound_effects/clapping.mp3');
       Navigator.pushNamed(context, "/" + type + "Completed",
           arguments: QuizScore(score + answered - 1));
+    }
   }
 
   @override
