@@ -4,6 +4,12 @@ class QuizScore {
   QuizScore(this.score);
 }
 
+class CategoryArg {
+  final String category;
+
+  CategoryArg(this.category);
+}
+
 class RankArguments {
   final int curscore;
   final String name;

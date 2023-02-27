@@ -61,10 +61,8 @@ class NavButton extends StatefulWidget {
 
 class _NavButtonState extends State<NavButton> {
   void _onPressed() {
-    Navigator.pushNamed(
-      context,
-      '/' + widget.next,
-    );
+    Navigator.pushNamed(context, '/' + widget.next,
+        arguments: CategoryArg(widget.btext));
     widget.eP();
   }
 

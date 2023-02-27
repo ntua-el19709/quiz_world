@@ -19,12 +19,24 @@ class _CategoriesState extends State<Categories> {
     'Category 5',
     'Category 6',
     'Category 7',
-    'Category 8'
+    'Category 8',
+    'Category 9',
+    'Category 10',
+    'Category 11',
+    'Category 12',
+    'Category 13',
+    'Category 14',
+    'Category 15',
+    'Category 16',
+    'Category 17',
+    'Category 18',
+    'Category 19',
+    'Category 20',
   ];
 
   List<Widget> getCats() {
     List<Widget> CategoriesNames = [];
-    for (int i = 0; i < 8; i++) {
+    for (int i = 0; i < 20; i++) {
       CategoriesNames.add(NavButton(
         btext: names[i],
         next: 'Category',

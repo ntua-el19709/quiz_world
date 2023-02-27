@@ -39,8 +39,8 @@ class MyApp extends StatelessWidget {
         '/': (context) => const HomePage(title: 'Flutter Demo'),
         '/Categories': (context) => const Categories(title: 'Flutter Demo'),
         '/QOTD': (context) => const QuizoftheDay(title: 'Flutter Demo'),
-        '/Category': (context) =>
-            Category(title: 'Flutter Demo', category: 'History'),
+        //'/Category': (context) =>
+        //   Category(title: 'Flutter Demo', category: 'History'),
         '/QOTDCompleted': (context) =>
             QuizoftheDayCompleted(title: 'Flutter Demo', score: 90),
       },
@@ -59,6 +59,17 @@ class MyApp extends StatelessWidget {
                 name: args.name,
                 curscore: args.curscore,
                 title: 'Flutter Demo',
+              );
+            },
+          );
+        }
+        if (settings.name == Category.routeName) {
+          final args = settings.arguments as CategoryArg;
+          return MaterialPageRoute(
+            builder: (context) {
+              return Category(
+                title: 'Flutter Demo',
+                category: args.category,
               );
             },
           );

@@ -130,12 +130,12 @@ class _ChallengeState extends State<Challenge> {
                   )),
               Container(
                 height: (MediaQuery.of(context).size.height -
-                        7.6 * heightsize -
+                        7.1 * heightsize -
                         124) /
                     2,
               ),
               Container(
-                height: 5 * heightsize,
+                height: 4.5 * heightsize,
                 width: MediaQuery.of(context).size.width - 20,
                 child: TextButton(
                     style: ElevatedButton.styleFrom(
@@ -154,7 +154,7 @@ class _ChallengeState extends State<Challenge> {
               ),
               Container(
                   height: (MediaQuery.of(context).size.height -
-                          7.6 * heightsize -
+                          7.1 * heightsize -
                           124) /
                       2),
               Container(

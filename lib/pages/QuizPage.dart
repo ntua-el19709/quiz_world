@@ -35,7 +35,14 @@ class _QuizPageState extends State<QuizPage> {
   }
 
   void _onPressedNext() {
-    if (answered > 0)
+    if (answered == 0) return;
+    if (type == 'Challenge' && answered == 11) {
+      Navigator.pushNamed(context, '/QuizPage',
+          arguments: QuizArguments(type, score + 10, widget.title));
+    } else if (type == 'Quiz' && answered == 1) {
+      Navigator.pushNamed(context, '/QuizPage',
+          arguments: QuizArguments(type, score - 1, widget.title));
+    } else
       Navigator.pushNamed(context, "/" + type + "Completed",
           arguments: QuizScore(score + answered - 1));
   }

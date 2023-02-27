@@ -31,8 +31,8 @@ class _OptionButtonState extends State<OptionButton> {
       });
       answered = 1;
       if (correct == 0) {
-        //HapticFeedback.heavyImpact();
-        Vibration.vibrate(duration: 1000);
+        HapticFeedback.heavyImpact();
+        //Vibration.vibrate(duration: 1000);
       }
     }
   }
