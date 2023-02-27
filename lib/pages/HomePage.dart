@@ -15,7 +15,8 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    double heightsize = 100;
+    double heightsize = (MediaQuery.of(context).size.width) / 4,
+        fsize = (MediaQuery.of(context).size.width) / 6;
     return Scaffold(
       body: GestureDetector(
           onTap: _onPressed,
@@ -37,16 +38,16 @@ class _HomePageState extends State<HomePage> {
                           Text('QUIZ\nWORLD',
                               textAlign: TextAlign.center,
                               style: TextStyle(
-                                fontSize: 80,
+                                fontSize: fsize,
                                 foreground: Paint()
                                   ..style = PaintingStyle.stroke
                                   ..strokeWidth = 6
                                   ..color = Colors.black,
                               )),
-                          const Text('QUIZ\nWORLD',
+                          Text('QUIZ\nWORLD',
                               textAlign: TextAlign.center,
                               style: TextStyle(
-                                fontSize: 80,
+                                fontSize: fsize,
                                 color: Colors.white,
                               )),
                         ],

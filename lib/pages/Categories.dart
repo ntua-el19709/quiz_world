@@ -37,7 +37,9 @@ class _CategoriesState extends State<Categories> {
 
   @override
   Widget build(BuildContext context) {
-    double heightsize = 100;
+    double heightsize = (MediaQuery.of(context).size.width) / 9,
+        fsize = (MediaQuery.of(context).size.width) / 11;
+    if (heightsize > 100) heightsize = 100;
     return Scaffold(
       body: Container(
         decoration: const BoxDecoration(
@@ -56,15 +58,15 @@ class _CategoriesState extends State<Categories> {
                     children: <Widget>[
                       Text('Categories',
                           style: TextStyle(
-                            fontSize: 80,
+                            fontSize: fsize,
                             foreground: Paint()
                               ..style = PaintingStyle.stroke
                               ..strokeWidth = 6
                               ..color = Colors.black,
                           )),
-                      const Text('Categories',
+                      Text('Categories',
                           style: TextStyle(
-                            fontSize: 80,
+                            fontSize: fsize,
                             color: Colors.white,
                           )),
                     ],

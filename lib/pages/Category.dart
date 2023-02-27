@@ -39,7 +39,9 @@ class _CategoryState extends State<Category> {
 
   @override
   Widget build(BuildContext context) {
-    double heightsize = 100;
+    double heightsize = (MediaQuery.of(context).size.width) / 9,
+        fsize = (MediaQuery.of(context).size.width) / 11;
+    if (heightsize > 100) heightsize = 100;
     String category = widget.category;
     return Scaffold(
       body: Container(
@@ -59,15 +61,15 @@ class _CategoryState extends State<Category> {
                     children: <Widget>[
                       Text(category,
                           style: TextStyle(
-                            fontSize: 80,
+                            fontSize: fsize,
                             foreground: Paint()
                               ..style = PaintingStyle.stroke
                               ..strokeWidth = 6
                               ..color = Colors.black,
                           )),
                       Text(category,
-                          style: const TextStyle(
-                            fontSize: 80,
+                          style: TextStyle(
+                            fontSize: fsize,
                             color: Colors.white,
                           )),
                     ],
@@ -88,7 +90,7 @@ class _CategoryState extends State<Category> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _onPressed,
-        tooltip: 'Increment',
+        tooltip: 'Back',
         backgroundColor: const Color.fromARGB(210, 255, 255, 255),
         child: const Icon(
           Icons.arrow_back,

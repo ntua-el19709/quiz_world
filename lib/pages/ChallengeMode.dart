@@ -72,7 +72,9 @@ class _ChallengeState extends State<Challenge> {
 
   @override
   Widget build(BuildContext context) {
-    double heightsize = 80;
+    double heightsize = (MediaQuery.of(context).size.width) / 9,
+        fsize = (MediaQuery.of(context).size.width) / 11;
+    if (heightsize > 100) heightsize = 100;
     if (widget.name != 'null') addName(widget.name, widget.curscore);
     return Scaffold(
       body: Container(
@@ -93,47 +95,47 @@ class _ChallengeState extends State<Challenge> {
                       Text('Challenge\nMode',
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                            fontSize: 70,
+                            fontSize: fsize,
                             foreground: Paint()
                               ..style = PaintingStyle.stroke
                               ..strokeWidth = 6
                               ..color = Colors.black,
                           )),
-                      const Text('Challenge\nMode',
+                      Text('Challenge\nMode',
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                            fontSize: 70,
+                            fontSize: fsize,
                             color: Colors.white,
                           )),
                     ],
                   )),
               Container(
-                  height: heightsize,
+                  height: heightsize * 0.6,
                   child: Stack(
                     children: <Widget>[
                       Text('Ranking',
                           style: TextStyle(
-                            fontSize: 40,
+                            fontSize: fsize * (0.6),
                             foreground: Paint()
                               ..style = PaintingStyle.stroke
                               ..strokeWidth = 6
                               ..color = Colors.black,
                           )),
-                      const Text('Ranking',
+                      Text('Ranking',
                           style: TextStyle(
-                            fontSize: 40,
+                            fontSize: fsize * (0.6),
                             color: Colors.white,
                           )),
                     ],
                   )),
               Container(
                 height: (MediaQuery.of(context).size.height -
-                        6 * heightsize -
+                        6.6 * heightsize -
                         124) /
                     2,
               ),
               Container(
-                height: 3 * heightsize,
+                height: 4 * heightsize,
                 width: MediaQuery.of(context).size.width - 20,
                 child: TextButton(
                     style: ElevatedButton.styleFrom(
@@ -152,7 +154,7 @@ class _ChallengeState extends State<Challenge> {
               ),
               Container(
                   height: (MediaQuery.of(context).size.height -
-                          6 * heightsize -
+                          6.6 * heightsize -
                           124) /
                       2),
               Container(

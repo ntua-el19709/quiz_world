@@ -23,7 +23,9 @@ class _ChallengeCompletedState extends State<ChallengeCompleted> {
 
   @override
   Widget build(BuildContext context) {
-    double heightsize = 100;
+    double heightsize = (MediaQuery.of(context).size.width) / 9,
+        fsize = (MediaQuery.of(context).size.width) / 11;
+    if (heightsize > 100) heightsize = 100;
     int score = widget.score;
     return Scaffold(
         body: GestureDetector(
@@ -46,27 +48,28 @@ class _ChallengeCompletedState extends State<ChallengeCompleted> {
                       Text('Challenge\nCompleted',
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                            fontSize: 80,
+                            fontSize: fsize,
                             foreground: Paint()
                               ..style = PaintingStyle.stroke
                               ..strokeWidth = 6
                               ..color = Colors.black,
                           )),
-                      const Text('Challenge\nCompleted',
+                      Text('Challenge\nCompleted',
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                            fontSize: 80,
+                            fontSize: fsize,
                             color: Colors.white,
                           )),
                     ],
                   )),
               Container(
-                height:
-                    (MediaQuery.of(context).size.height - 5 * heightsize - 70) /
-                        2,
+                height: (MediaQuery.of(context).size.height -
+                        3 * heightsize -
+                        270) /
+                    2,
               ),
               Container(
-                height: 2 * heightsize,
+                height: 200,
                 width: 200,
                 child: TextButton(
                   style: ElevatedButton.styleFrom(
@@ -86,9 +89,10 @@ class _ChallengeCompletedState extends State<ChallengeCompleted> {
                 ),
               ),
               Container(
-                height:
-                    (MediaQuery.of(context).size.height - 5 * heightsize - 70) /
-                        2,
+                height: (MediaQuery.of(context).size.height -
+                        3 * heightsize -
+                        270) /
+                    2,
               ),
               Container(
                 height: 50,

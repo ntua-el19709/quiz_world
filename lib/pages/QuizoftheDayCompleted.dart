@@ -16,7 +16,8 @@ class _QuizoftheDayCompletedState extends State<QuizoftheDayCompleted> {
 
   @override
   Widget build(BuildContext context) {
-    double heightsize = 100;
+    double heightsize = (MediaQuery.of(context).size.width) / 10,
+        fsize = (MediaQuery.of(context).size.width) / 12;
     int score = widget.score;
     return Scaffold(
         body: GestureDetector(
@@ -39,16 +40,16 @@ class _QuizoftheDayCompletedState extends State<QuizoftheDayCompleted> {
                       Text('Quiz of the\nDay\nCompleted',
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                            fontSize: 80,
+                            fontSize: fsize,
                             foreground: Paint()
                               ..style = PaintingStyle.stroke
                               ..strokeWidth = 6
                               ..color = Colors.black,
                           )),
-                      const Text('Quiz of the\nDay\nCompleted',
+                      Text('Quiz of the\nDay\nCompleted',
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                            fontSize: 80,
+                            fontSize: fsize,
                             color: Colors.white,
                           )),
                     ],

@@ -44,8 +44,12 @@ class _QuizPageState extends State<QuizPage> {
   Widget build(BuildContext context) {
     score = widget.score;
     String title = widget.quiztitle;
+    if (title == "Take Quiz of the Day") title = "Quiz of the Day";
+    if (title == "Take Challenge") title = "Challenge";
     type = widget.type;
-    double heightsize = 100;
+    double heightsize = (MediaQuery.of(context).size.height) / 10,
+        fsize = (MediaQuery.of(context).size.width) / 12;
+    if (heightsize > 100) heightsize = 100;
     return Scaffold(
         body: GestureDetector(
       onTap: _onPressedNext,
@@ -66,25 +70,25 @@ class _QuizPageState extends State<QuizPage> {
                     children: <Widget>[
                       Text(title,
                           style: TextStyle(
-                            fontSize: 80,
+                            fontSize: fsize,
                             foreground: Paint()
                               ..style = PaintingStyle.stroke
                               ..strokeWidth = 6
                               ..color = Colors.black,
                           )),
                       Text(title,
-                          style: const TextStyle(
-                            fontSize: 80,
+                          style: TextStyle(
+                            fontSize: fsize,
                             color: Colors.white,
                           )),
                     ],
                   )),
               Container(
-                height:
-                    (MediaQuery.of(context).size.height - 5 * heightsize) / 3,
+                height: 30,
               ),
               Container(
-                  height: 4 * heightsize,
+                  height:
+                      (MediaQuery.of(context).size.height - heightsize - 60),
                   child: Question(
                     qtext: 'x-2=2. x=',
                     opt1t: '2',
@@ -96,6 +100,9 @@ class _QuizPageState extends State<QuizPage> {
                     eP: _onPressed,
                     ePN: _onPressedNext,
                   )),
+              Container(
+                height: 30,
+              ),
             ],
           ),
         ),

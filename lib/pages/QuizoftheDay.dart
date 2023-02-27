@@ -20,7 +20,9 @@ class _QuizoftheDayState extends State<QuizoftheDay> {
 
   @override
   Widget build(BuildContext context) {
-    double heightsize = 100;
+    double heightsize = (MediaQuery.of(context).size.width) / 9,
+        fsize = (MediaQuery.of(context).size.width) / 11;
+    if (heightsize > 100) heightsize = 100;
     return Scaffold(
       body: Container(
         decoration: const BoxDecoration(
@@ -40,28 +42,28 @@ class _QuizoftheDayState extends State<QuizoftheDay> {
                       Text('Quiz of the\nDay',
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                            fontSize: 80,
+                            fontSize: fsize,
                             foreground: Paint()
                               ..style = PaintingStyle.stroke
                               ..strokeWidth = 6
                               ..color = Colors.black,
                           )),
-                      const Text('Quiz of the\nDay',
+                      Text('Quiz of the\nDay',
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                            fontSize: 80,
+                            fontSize: fsize,
                             color: Colors.white,
                           )),
                     ],
                   )),
               Container(
                 height: (MediaQuery.of(context).size.height -
-                        4 * heightsize -
-                        124) /
+                        2 * heightsize -
+                        324) /
                     2,
               ),
               Container(
-                height: 2 * heightsize,
+                height: 200,
                 width: 200,
                 child: TextButton(
                   style: ElevatedButton.styleFrom(
@@ -82,8 +84,8 @@ class _QuizoftheDayState extends State<QuizoftheDay> {
               ),
               Container(
                 height: (MediaQuery.of(context).size.height -
-                        4 * heightsize -
-                        124) /
+                        2 * heightsize -
+                        324) /
                     2,
               ),
               Container(
