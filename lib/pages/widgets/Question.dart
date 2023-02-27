@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import './OptionButton.dart';
 
 class Question extends StatefulWidget {
@@ -14,16 +13,6 @@ class Question extends StatefulWidget {
       required this.qnum,
       required this.eP,
       required this.ePN});
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
   final String qtext;
   final String opt1t;
   final String opt2t;
@@ -57,17 +46,9 @@ class _QuestionState extends State<Question> {
   }
 
   void _onPressedNext() {
-    print('question pressed');
     if (_pressed == 1) widget.ePN();
   }
 
-/*
-  MaterialColor _getColor() {
-    if (_pressed == 0) return Colors.purple;
-    if (correct == 1) return Colors.green;
-    return Colors.red;
-  }
-*/
   @override
   Widget build(BuildContext context) {
     qnum = widget.qnum;
@@ -75,35 +56,32 @@ class _QuestionState extends State<Question> {
     if (widget.cor == 2) cor2 = 1;
     if (widget.cor == 3) cor3 = 1;
     if (widget.cor == 4) cor4 = 1;
-    //widget.opttext;
     double widthsize = MediaQuery.of(context).size.width;
     return Container(
         width: widthsize - 20,
         height: 280,
         child: TextButton(
             style: ElevatedButton.styleFrom(
-                primary: Color.fromARGB(210, 255, 255, 255),
-                //onPrimary: Colors.white,
-                //onSurface: Colors.purple,
-                padding: EdgeInsets.symmetric(horizontal: 16.0),
+                primary: const Color.fromARGB(210, 255, 255, 255),
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
                 shape: const RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(Radius.circular(20.0)),
                 ),
-                side: BorderSide(width: 5, color: Colors.black)),
+                side: const BorderSide(width: 5, color: Colors.black)),
             onPressed: _onPressedNext,
-            child: Column(//backgroundColor: Color.fromARGB(210, 255, 255, 255)
-                children: <Widget>[
+            child: Column(children: <Widget>[
               Container(height: 10),
               Container(
                   child: Text('Question #$qnum',
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 30,
                         color: Colors.black,
                       ))),
               Container(height: 20),
               Container(
                   child: Text(widget.qtext,
-                      style: TextStyle(fontSize: 40, color: Colors.black))),
+                      style:
+                          const TextStyle(fontSize: 40, color: Colors.black))),
               Container(height: 20),
               Container(
                   height: 50,

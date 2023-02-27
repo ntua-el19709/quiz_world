@@ -1,26 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:my_app/pages/widgets/eventPressed.dart';
-import './widgets/OptionButton.dart';
-import './widgets/Question.dart';
 import './widgets/NavBar.dart';
 import './widgets/NavButton.dart';
-import 'package:event/event.dart';
 
 class QuizoftheDay extends StatefulWidget {
+  static const routeName = '/QOTD';
   const QuizoftheDay({super.key, required this.title});
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
   final String title;
-
   @override
   State<QuizoftheDay> createState() => _QuizoftheDayState();
 }
@@ -29,61 +14,23 @@ class _QuizoftheDayState extends State<QuizoftheDay> {
   int _counter = 0;
   void _onPressed() {
     setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
       _counter++;
     });
-    print(_counter);
   }
 
-  //var eP = EventPressed();
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
-
-    //eP.Pressed.subscribe((args) => print(eP.value));
-    //print(eP.value);
     double heightsize = 100;
     return Scaffold(
-      /*appBar: AppBar(
-        // Here we take the value from the QuizoftheDay object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),*/
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage("../background.png"),
             fit: BoxFit.cover,
           ),
         ),
         child: Center(
-          // Center is a layout widget. It takes a single child and positions it
-          // in the middle of the parent.
           child: Column(
-            // Column is also a layout widget. It takes a list of children and
-            // arranges them vertically. By default, it sizes itself to fit its
-            // children horizontally, and tries to be as tall as its parent.
-            //
-            // Invoke "debug painting" (press "p" in the console, choose the
-            // "Toggle Debug Paint" action from the Flutter Inspector in Android
-            // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-            // to see the wireframe for each widget.
-            //
-            // Column has various properties to control how it sizes itself and
-            // how it positions its children. Here we use mainAxisAlignment to
-            // center the children vertically; the main axis here is the vertical
-            // axis because Columns are vertical (the cross axis would be
-            // horizontal).
-
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
               Container(
@@ -99,7 +46,7 @@ class _QuizoftheDayState extends State<QuizoftheDay> {
                               ..strokeWidth = 6
                               ..color = Colors.black,
                           )),
-                      Text('Quiz of the\nDay',
+                      const Text('Quiz of the\nDay',
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontSize: 80,
@@ -117,22 +64,17 @@ class _QuizoftheDayState extends State<QuizoftheDay> {
                 height: 2 * heightsize,
                 width: 200,
                 child: TextButton(
-                  //autofocus: false,
-                  //clipBehavior: Clip.none,
                   style: ElevatedButton.styleFrom(
-                      //backgroundColor: Colors.black,
-                      primary: Color.fromARGB(210, 255, 255, 255),
-                      //onPrimary: Colors.white,
-                      //onSurface: Colors.purple,
-                      padding: EdgeInsets.symmetric(horizontal: 16.0),
+                      primary: const Color.fromARGB(210, 255, 255, 255),
+                      padding: const EdgeInsets.symmetric(horizontal: 16.0),
                       shape: const RoundedRectangleBorder(
                         borderRadius: BorderRadius.all(Radius.circular(20.0)),
                       ),
-                      side: BorderSide(width: 3, color: Colors.black)),
+                      side: const BorderSide(width: 3, color: Colors.black)),
                   onPressed: () {},
                   child: Text('Daily Streak\n\n$_counter',
                       textAlign: TextAlign.center,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 30,
                         color: Colors.black,
                       )),
@@ -144,16 +86,14 @@ class _QuizoftheDayState extends State<QuizoftheDay> {
                         124) /
                     2,
               ),
-              GestureDetector(
-                  onTap: _onPressed,
-                  child: Container(
-                      height: 50,
-                      child: NavButtonQuiz(
-                        btext: 'Take Quiz of the Day',
-                        next: 'QuizPage',
-                        eP: _onPressed,
-                        type: 'QOTD',
-                      ))),
+              Container(
+                  height: 50,
+                  child: NavButtonQuiz(
+                    btext: 'Take Quiz of the Day',
+                    next: 'QuizPage',
+                    eP: _onPressed,
+                    type: 'QOTD',
+                  )),
               Container(
                 height: 20,
               ),
@@ -162,13 +102,6 @@ class _QuizoftheDayState extends State<QuizoftheDay> {
           ),
         ),
       ),
-      /*
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ),
-      */ // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }

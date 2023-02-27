@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 
 class OptionButton extends StatefulWidget {
   const OptionButton(
@@ -8,15 +7,6 @@ class OptionButton extends StatefulWidget {
       required this.correct,
       required this.answered,
       required this.eP});
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
 
   final String opttext;
   final int correct;
@@ -27,8 +17,8 @@ class OptionButton extends StatefulWidget {
 }
 
 class _OptionButtonState extends State<OptionButton> {
-  int _pressed = 0;
-  int answered = 1;
+  int _pressed = 0; //if THIS option is selected
+  int answered = 1; //if an option has already been seleccted
   int correct = 0; // 1 for correct, 0 for incorrect
 
   void _onPressed() {
@@ -52,23 +42,18 @@ class _OptionButtonState extends State<OptionButton> {
   Widget build(BuildContext context) {
     answered = widget.answered;
     correct = widget.correct;
-    //widget.opttext;
     return Container(
         height: 30,
         width: MediaQuery.of(context).size.width - 40,
         child: TextButton(
-          //autofocus: false,
-          //clipBehavior: Clip.none,
           style: ElevatedButton.styleFrom(
-              //backgroundColor: Colors.black,
               primary: _getColor(),
               onPrimary: Colors.white,
-              //onSurface: Colors.purple,
-              padding: EdgeInsets.symmetric(horizontal: 16.0),
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
               shape: const RoundedRectangleBorder(
                 borderRadius: BorderRadius.all(Radius.circular(20.0)),
               ),
-              side: BorderSide(width: 3, color: Colors.black)),
+              side: const BorderSide(width: 3, color: Colors.black)),
           onPressed: _onPressed,
           child: Text(widget.opttext),
         ));
