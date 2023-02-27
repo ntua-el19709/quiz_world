@@ -6,6 +6,7 @@ import './widgets/NavBar.dart';
 import './widgets/NavButton.dart';
 
 class QuizCompleted extends StatefulWidget {
+  static const routeName = '/QuizCompleted';
   const QuizCompleted({super.key, required this.title, required this.score});
 
   // This widget is the home page of your application. It is stateful, meaning
@@ -69,7 +70,7 @@ class _QuizCompletedState extends State<QuizCompleted> {
         body: GestureDetector(
       onTap: _onPressed,
       child: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage("../background.png"),
             fit: BoxFit.cover,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:my_app/pages/Category.dart';
+import 'package:my_app/pages/widgets/Arguments.dart';
 import 'package:my_app/pages/widgets/eventPressed.dart';
 import 'package:my_app/pages/ChallengeMode.dart';
 import 'package:my_app/pages/QuizoftheDay.dart';
@@ -43,20 +44,107 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => HomePage(title: 'Flutter Demo'),
         '/Categories': (context) => Categories(title: 'Flutter Demo'),
-        '/Challenge': (context) => Challenge(title: 'Flutter Demo'),
+        //'/Challenge': (context) => Challenge(title: 'Flutter Demo'),
         '/QOTD': (context) => QuizoftheDay(title: 'Flutter Demo'),
         '/Category': (context) =>
             Category(title: 'Flutter Demo', category: 'History'),
+        /*
         '/QuizCompleted': (context) =>
             QuizCompleted(title: 'Flutter Demo', score: 90),
+            */
         '/QOTDCompleted': (context) =>
             QuizoftheDayCompleted(title: 'Flutter Demo', score: 90),
-        '/ChallengeCompleted': (context) =>
+        /*'/ChallengeCompleted': (context) =>
             ChallengeCompleted(title: 'Flutter Demo', score: 90),
+        
         '/QuizPage': (context) => QuizPage(
               title: 'Flutter Demo',
               quiztitle: 'deigma',
             )
+            */
+      },
+      onGenerateRoute: (settings) {
+        if (settings.name == Challenge.routeName) {
+          // Cast the arguments to the correct
+          // type: ScreenArguments.
+          final args = settings.arguments as RankArguments;
+
+          // Then, extract the required data from
+          // the arguments and pass the data to the
+          // correct screen.
+          return MaterialPageRoute(
+            builder: (context) {
+              return Challenge(
+                name: args.name,
+                curscore: args.curscore,
+                title: 'Flutter Demo',
+              );
+            },
+          );
+        }
+        if (settings.name == ChallengeCompleted.routeName) {
+          // Cast the arguments to the correct
+          // type: ScreenArguments.
+          final args = settings.arguments as QuizScore;
+
+          // Then, extract the required data from
+          // the arguments and pass the data to the
+          // correct screen.
+          return MaterialPageRoute(
+            builder: (context) {
+              return ChallengeCompleted(
+                score: args.score,
+                title: 'Flutter Demo',
+              );
+            },
+          );
+        }
+        if (settings.name == QuizCompleted.routeName) {
+          // Cast the arguments to the correct
+          // type: ScreenArguments.
+          final args = settings.arguments as QuizScore;
+
+          // Then, extract the required data from
+          // the arguments and pass the data to the
+          // correct screen.
+          return MaterialPageRoute(
+            builder: (context) {
+              return QuizCompleted(
+                score: args.score,
+                title: 'Flutter Demo',
+              );
+            },
+          );
+        }
+        // If you push the PassArguments route
+        if (settings.name == QuizPage.routeName) {
+          // Cast the arguments to the correct
+          // type: ScreenArguments.
+          final args = settings.arguments as QuizArguments;
+
+          // Then, extract the required data from
+          // the arguments and pass the data to the
+          // correct screen.
+          return MaterialPageRoute(
+            builder: (context) {
+              return QuizPage(
+                type: args.type,
+                score: args.score,
+                quiztitle: args.quiztitle,
+                title: 'Flutter Demo',
+              );
+            },
+          );
+        }
+        // The code only supports
+        // PassArgumentsScreen.routeName right now.
+        // Other values need to be implemented if we
+        // add them. The assertion here will help remind
+        // us of that higher up in the call stack, since
+        // this assertion would otherwise fire somewhere
+        // in the framework.
+        assert(false, 'Need to implement ${settings.name}');
+        return null;
       },
       debugShowCheckedModeBanner: false,
       /*

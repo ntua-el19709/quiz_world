@@ -3,9 +3,18 @@ import 'package:flutter/rendering.dart';
 import './widgets/OptionButton.dart';
 import './widgets/Question.dart';
 import 'package:event/event.dart';
+import './QuizCompleted.dart';
+import './widgets/Arguments.dart';
 
 class QuizPage extends StatefulWidget {
-  const QuizPage({super.key, required this.title, required this.quiztitle});
+  static const routeName = '/QuizPage';
+  const QuizPage({
+    super.key,
+    required this.title,
+    required this.quiztitle,
+    required this.type,
+    required this.score,
+  });
 
   // This widget is the home page of your application. It is stateful, meaning
   // that it has a State object (defined below) that contains fields that affect
@@ -16,32 +25,40 @@ class QuizPage extends StatefulWidget {
   // used by the build method of the State. Fields in a Widget subclass are
   // always marked "final".
 
-  final String title, quiztitle;
-
+  final String title, quiztitle, type;
+  final int score;
   @override
   State<QuizPage> createState() => _QuizPageState();
 }
 
 class _QuizPageState extends State<QuizPage> {
-  int _counter = 0, answered = 0;
-
-  final OptionSelected = Event();
+  int _counter = 0, answered = 0, score = 0;
+  String type = "";
 
   //OptionSelected.subscribe( (args) => answered=1);
 
-  void _onPressed() {
-    setState(() {
-      answered = 1;
-    });
+  void _onPressed(int cor) {
+    if (cor == 1)
+      setState(() {
+        answered = 11;
+      });
+    else
+      setState(() {
+        answered = 1;
+      });
   }
 
   void _onPressedNext() {
-    if (answered == 1) Navigator.pushNamed(context, "/QuizCompleted");
+    if (answered > 0)
+      Navigator.pushNamed(context, "/" + type + "Completed",
+          arguments: QuizScore(score + answered - 1));
   }
 
   @override
   Widget build(BuildContext context) {
+    score = widget.score;
     String title = widget.quiztitle;
+    type = widget.type;
     // This method is rerun every time setState is called, for instance as done
     // by the _incrementCounter method above.
     //
@@ -111,11 +128,11 @@ class _QuizPageState extends State<QuizPage> {
               Container(
                   height: 4 * heightsize,
                   child: Question(
-                    qtext: 'Pos se laloun',
-                    opt1t: 'Kostis',
-                    opt2t: 'Giannis',
-                    opt3t: 'Agathoklis',
-                    opt4t: "Aristofanis",
+                    qtext: 'x-2=2. x=',
+                    opt1t: '2',
+                    opt2t: '3',
+                    opt3t: '4',
+                    opt4t: '5',
                     cor: 3,
                     qnum: 1,
                     eP: _onPressed,

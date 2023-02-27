@@ -32,7 +32,7 @@ class _OptionButtonState extends State<OptionButton> {
   int correct = 0; // 1 for correct, 0 for incorrect
 
   void _onPressed() {
-    widget.eP();
+    widget.eP(correct);
     if (answered == 0) {
       setState(() {
         _pressed = 1;

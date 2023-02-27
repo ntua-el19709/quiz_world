@@ -42,12 +42,15 @@ class _QuestionState extends State<Question> {
   int qnum = 0;
   int cor1 = 0, cor2 = 0, cor3 = 0, cor4 = 0; // 1 for correct, 0 for incorrect
 
-  void _onPressed() {
+  void _onPressed(cor) {
     if (_pressed == 0) {
       setState(() {
         _pressed = 1;
       });
-      widget.eP();
+      if (cor == 1)
+        widget.eP(1);
+      else
+        widget.eP(0);
     } else {
       widget.ePN();
     }

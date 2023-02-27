@@ -7,7 +7,12 @@ import './widgets/NavBar.dart';
 import './widgets/NavButton.dart';
 
 class Challenge extends StatefulWidget {
-  const Challenge({super.key, required this.title});
+  static const routeName = '/Challenge';
+  const Challenge(
+      {super.key,
+      required this.title,
+      required this.name,
+      required this.curscore});
 
   // This widget is the home page of your application. It is stateful, meaning
   // that it has a State object (defined below) that contains fields that affect
@@ -18,30 +23,35 @@ class Challenge extends StatefulWidget {
   // used by the build method of the State. Fields in a Widget subclass are
   // always marked "final".
 
-  final String title;
+  final String title, name;
+  final int curscore;
 
   @override
   State<Challenge> createState() => _ChallengeState();
 }
 
 class _ChallengeState extends State<Challenge> {
-  List<String> names = [
-    'History',
-    'Geography',
-    'Music',
-    'Category 4',
-    'Category 5',
-    'Category 6',
-    'Category 7',
-    'Category 8'
+  List<int> scores = [
+    120,
+    100,
+    90,
+    70,
+    30,
+    10,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
   ];
   List<String> Rnames = [
     'Kostakis',
     'Petrakis',
     'Giorgakis',
     'Agathoklis',
-    'Name',
-    'Name',
+    'Aristofanis',
+    'Aristotelis',
     'Name',
     'Name',
     'Name',
@@ -63,25 +73,30 @@ class _ChallengeState extends State<Challenge> {
     });
   }
 
-  List<Widget> getCats() {
-    List<Widget> ChallengeNames = [];
-    for (int i = 0; i < 8; i++) {
-      ChallengeNames.add(NavButton(btext: names[i], next: names[i], eP: () {}));
-      ChallengeNames.add(Container(height: 10));
-    }
-    return ChallengeNames;
-  }
-
   int max(int a, int b) {
     if (a > b) return a;
     return b;
   }
 
+  void addName(String name, int curscore) {
+    bool better = true;
+    int i = 11;
+    while (i > -1 && curscore >= scores[i]) {
+      i--;
+    }
+    i++;
+    for (int j = 11; j > i; j--) {
+      Rnames[j] = Rnames[j - 1];
+      scores[j] = scores[j - 1];
+    }
+    Rnames[i] = name;
+    scores[i] = curscore;
+  }
+
   List<Widget> getRanking() {
     List<Widget> Ranks = [];
     for (int i = 0; i < 12; i++) {
-      Ranks.add(
-          RankItem(num: i + 1, name: Rnames[i], score: max(120 - 30 * i, 0)));
+      Ranks.add(RankItem(num: i + 1, name: Rnames[i], score: scores[i]));
       Ranks.add(Container(height: 10));
     }
     return Ranks;
@@ -96,6 +111,7 @@ class _ChallengeState extends State<Challenge> {
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
     double heightsize = 80;
+    if (widget.name != 'null') addName(widget.name, widget.curscore);
     return Scaffold(
       /*appBar: AppBar(
         // Here we take the value from the Challenge object that was created by
@@ -205,9 +221,13 @@ class _ChallengeState extends State<Challenge> {
                           124) /
                       2),
               Container(
-                  height: 50,
-                  child: NavButton(
-                      btext: 'Take Challenge', next: 'QuizPage', eP: () {})),
+                height: 50,
+                child: NavButtonQuiz(
+                    btext: 'Take Challenge',
+                    next: 'QuizPage',
+                    eP: () {},
+                    type: 'Challenge'),
+              ),
               Container(
                 height: 20,
               ),

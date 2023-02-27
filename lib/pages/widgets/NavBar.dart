@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:my_app/pages/widgets/Arguments.dart';
 
 class NavBar extends StatefulWidget {
   const NavBar({super.key, required this.page});
@@ -24,7 +25,11 @@ class _NavBarState extends State<NavBar> {
   void _onPressed(int index) {
     String next = "/Categories";
     if (index == 1) next = "/QOTD";
-    if (index == 2) next = "/Challenge";
+    if (index == 2) {
+      next = "/Challenge";
+      Navigator.pushNamed(context, next, arguments: RankArguments('null', 0));
+      return;
+    }
     Navigator.pushNamed(context, next);
   }
 

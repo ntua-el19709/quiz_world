@@ -44,8 +44,8 @@ class _CategoryState extends State<Category> {
   List<Widget> getQuizes() {
     List<Widget> CategoryNames = [];
     for (int i = 0; i < 8; i++) {
-      CategoryNames.add(
-          NavButton(btext: quizes[i], next: 'QuizPage', eP: () {}));
+      CategoryNames.add(NavButtonQuiz(
+          btext: quizes[i], next: 'QuizPage', eP: () {}, type: 'Quiz'));
       CategoryNames.add(Container(height: 10));
     }
     return CategoryNames;

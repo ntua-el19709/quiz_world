@@ -4,8 +4,10 @@ import './widgets/OptionButton.dart';
 import './widgets/Question.dart';
 import './widgets/NavBar.dart';
 import './widgets/NavButton.dart';
+import './widgets/Arguments.dart';
 
 class ChallengeCompleted extends StatefulWidget {
+  static const routeName = '/ChallengeCompleted';
   const ChallengeCompleted(
       {super.key, required this.title, required this.score});
 
@@ -24,6 +26,7 @@ class ChallengeCompleted extends StatefulWidget {
 }
 
 class _ChallengeCompletedState extends State<ChallengeCompleted> {
+  TextEditingController name = TextEditingController();
   List<String> quizes = [
     'WW1',
     'WW2',
@@ -38,7 +41,9 @@ class _ChallengeCompletedState extends State<ChallengeCompleted> {
   int _counter = 0;
 
   void _onPressed() {
-    Navigator.pushNamed(context, "/Challenge");
+    String temp = name.text;
+    Navigator.pushNamed(context, "/Challenge",
+        arguments: RankArguments(temp, widget.score));
   }
 
   List<Widget> getQuizes() {
@@ -70,7 +75,7 @@ class _ChallengeCompletedState extends State<ChallengeCompleted> {
         body: GestureDetector(
       onTap: _onPressed,
       child: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage("../background.png"),
             fit: BoxFit.cover,
@@ -166,7 +171,7 @@ class _ChallengeCompletedState extends State<ChallengeCompleted> {
                     filled: true,
                     fillColor: Color.fromARGB(210, 255, 255, 255),
                   ),
-                  controller: TextEditingController(),
+                  controller: name,
                 ),
               ),
               Container(height: 20),

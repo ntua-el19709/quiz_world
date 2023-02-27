@@ -48,7 +48,7 @@ class _HomePageState extends State<HomePage> {
       body: GestureDetector(
           onTap: _onPressed,
           child: Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               image: DecorationImage(
                 image: AssetImage("../background.png"),
                 fit: BoxFit.cover,

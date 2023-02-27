@@ -148,10 +148,11 @@ class _QuizoftheDayState extends State<QuizoftheDay> {
                   onTap: _onPressed,
                   child: Container(
                       height: 50,
-                      child: NavButton(
+                      child: NavButtonQuiz(
                         btext: 'Take Quiz of the Day',
                         next: 'QuizPage',
                         eP: _onPressed,
+                        type: 'QOTD',
                       ))),
               Container(
                 height: 20,
