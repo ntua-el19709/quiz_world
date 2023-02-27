@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:vibration/vibration.dart';
 
 class OptionButton extends StatefulWidget {
   const OptionButton(
@@ -28,6 +30,10 @@ class _OptionButtonState extends State<OptionButton> {
         _pressed = 1;
       });
       answered = 1;
+      if (correct == 0) {
+        //HapticFeedback.heavyImpact();
+        Vibration.vibrate(duration: 1000);
+      }
     }
   }
 

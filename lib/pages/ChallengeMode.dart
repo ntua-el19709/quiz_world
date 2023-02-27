@@ -80,7 +80,7 @@ class _ChallengeState extends State<Challenge> {
       body: Container(
         decoration: const BoxDecoration(
           image: DecorationImage(
-            image: AssetImage("../background.png"),
+            image: AssetImage("assets/background.png"),
             fit: BoxFit.cover,
           ),
         ),
@@ -130,12 +130,12 @@ class _ChallengeState extends State<Challenge> {
                   )),
               Container(
                 height: (MediaQuery.of(context).size.height -
-                        6.6 * heightsize -
+                        7.6 * heightsize -
                         124) /
                     2,
               ),
               Container(
-                height: 4 * heightsize,
+                height: 5 * heightsize,
                 width: MediaQuery.of(context).size.width - 20,
                 child: TextButton(
                     style: ElevatedButton.styleFrom(
@@ -154,7 +154,7 @@ class _ChallengeState extends State<Challenge> {
               ),
               Container(
                   height: (MediaQuery.of(context).size.height -
-                          6.6 * heightsize -
+                          7.6 * heightsize -
                           124) /
                       2),
               Container(

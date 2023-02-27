@@ -39,7 +39,7 @@ class _RankItemState extends State<RankItem> {
           ),
         ),
         Container(
-          width: MediaQuery.of(context).size.width - 218,
+          width: MediaQuery.of(context).size.width - 168,
           child: Center(
               child: Text(
             name,
@@ -47,7 +47,7 @@ class _RankItemState extends State<RankItem> {
           )),
         ),
         Container(
-          width: 100,
+          width: 50,
           child: Center(
               child: Text(
             '$score',
